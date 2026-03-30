@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smash Phones Store — Elite Builder</title>
+    <title>Smash Phones Store — Elite Builder v2</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -30,27 +30,36 @@
       <section class="panel config-panel glass">
         <div class="panel-head">
           <h2>Configura il tuo smartphone premium</h2>
-          <p>Seleziona ogni dettaglio hardware/software con aggiornamento live in stile store professionale.</p>
+          <p>Interfaccia avanzata con blocchi professionali, loghi brand, componenti reali e output e-commerce finale.</p>
         </div>
 
+        <nav class="step-nav" aria-label="Passi configurazione">
+          <a href="#coreSec">Core</a>
+          <a href="#cameraSec">Fotocamere</a>
+          <a href="#sensorSec">Sensori</a>
+          <a href="#sysSec">Sistema</a>
+          <a href="#styleSec">Design & Prezzo</a>
+        </nav>
+
         <div class="config-sections">
-          <section class="section-box">
+          <section id="coreSec" class="section-box">
             <h3>⚙️ Core Hardware</h3>
+            <div class="logo-strip" id="brandStrip"></div>
             <div class="field-grid two-col">
               <article class="field-card">
-                <label for="cpuSelect">Processore (CPU)</label>
+                <label for="cpuSelect">🧠 Processore (CPU)</label>
                 <select id="cpuSelect"></select>
                 <small id="cpuSpecs" class="hint"></small>
               </article>
 
               <article class="field-card">
-                <label for="gpuSelect">Scheda grafica (GPU)</label>
+                <label for="gpuSelect">🎮 Scheda grafica (GPU)</label>
                 <select id="gpuSelect"></select>
                 <small id="gpuSpecs" class="hint"></small>
               </article>
 
               <article class="field-card">
-                <label for="ramSelect">RAM fisica</label>
+                <label for="ramSelect">🧩 RAM fisica</label>
                 <select id="ramSelect"></select>
                 <label class="toggle-row" for="dynamicRamToggle">
                   <span>RAM dinamica</span>
@@ -61,7 +70,7 @@
               </article>
 
               <article class="field-card">
-                <label for="storageSelect">Memoria interna (SSD/UFS)</label>
+                <label for="storageSelect">💾 Memoria interna</label>
                 <select id="storageSelect"></select>
                 <label for="storageType">Tipo storage</label>
                 <select id="storageType">
@@ -74,7 +83,7 @@
             </div>
           </section>
 
-          <section class="section-box">
+          <section id="cameraSec" class="section-box">
             <h3>📸 Fotocamere Professionali</h3>
             <article class="field-card">
               <label for="cameraCount">Numero fotocamere (1–7)</label>
@@ -84,7 +93,7 @@
             </article>
           </section>
 
-          <section class="section-box">
+          <section id="sensorSec" class="section-box">
             <h3>🔬 Sensori e Sicurezza</h3>
             <article class="field-card">
               <label>Sensori disponibili</label>
@@ -92,7 +101,7 @@
             </article>
           </section>
 
-          <section class="section-box">
+          <section id="sysSec" class="section-box">
             <h3>🔋 Display, Battery & Sistema</h3>
             <div class="field-grid three-col">
               <article class="field-card">
@@ -152,7 +161,7 @@
             </div>
           </section>
 
-          <section class="section-box">
+          <section id="styleSec" class="section-box">
             <h3>🎨 Materiali, Design e Prezzo</h3>
             <div class="field-grid three-col">
               <article class="field-card">
@@ -207,6 +216,8 @@
                 <label for="priceInput">Prezzo finale (€)</label>
                 <input id="priceInput" type="number" min="1" max="2999" value="1299" />
                 <small class="hint">Valore consentito: 1€ — 2.999€</small>
+                <label for="autoPrice">Prezzo suggerito (auto)</label>
+                <input id="autoPrice" type="text" readonly />
                 <p id="priceError" class="error"></p>
               </article>
             </div>
@@ -252,17 +263,14 @@
           <label class="camera-adv">Apertura
             <input type="text" value="f/1.8" class="camera-aperture" />
           </label>
+          <label class="camera-adv">Dimensione sensore
+            <input type="text" value="1/1.56" class="camera-sensor-size" />
+          </label>
           <label class="camera-adv">OIS
-            <select class="camera-ois">
-              <option>No</option>
-              <option selected>Sì</option>
-            </select>
+            <select class="camera-ois"><option>No</option><option selected>Sì</option></select>
           </label>
           <label class="camera-adv">PDAF
-            <select class="camera-pdaf">
-              <option>No</option>
-              <option selected>Sì</option>
-            </select>
+            <select class="camera-pdaf"><option>No</option><option selected>Sì</option></select>
           </label>
           <label class="camera-adv">Zoom ottico (x)
             <input type="number" min="1" max="20" step="0.5" value="3" class="camera-zoom" />
@@ -271,12 +279,7 @@
             <input type="number" min="0.5" max="2.5" step="0.1" value="1.0" class="camera-pixel" />
           </label>
           <label class="camera-adv">Video max
-            <select class="camera-video">
-              <option>1080p60</option>
-              <option>4K30</option>
-              <option selected>4K60</option>
-              <option>8K30</option>
-            </select>
+            <select class="camera-video"><option>1080p60</option><option>4K30</option><option selected>4K60</option><option>8K30</option></select>
           </label>
         </div>
       </div>

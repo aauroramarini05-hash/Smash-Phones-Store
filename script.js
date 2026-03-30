@@ -1,32 +1,47 @@
 const processors = [
-  { brand: 'Snapdragon', name: '8 Gen 3', specs: '4nm · 1x3.3GHz + 5x3.2GHz + 2x2.3GHz · AI 10B params/s' },
-  { brand: 'Snapdragon', name: '8s Gen 3', specs: '4nm · flagship efficiency · Adreno high-tier' },
+  { brand: 'Snapdragon', name: '8 Elite', specs: '3nm · Oryon class · flagship 2026' },
+  { brand: 'Snapdragon', name: '8 Gen 3', specs: '4nm · 1x3.3GHz + 5x3.2GHz + 2x2.3GHz' },
+  { brand: 'Snapdragon', name: '8 Gen 2', specs: '4nm · premium high-end' },
+  { brand: 'Snapdragon', name: '8s Gen 3', specs: '4nm · flagship efficiency' },
   { brand: 'Snapdragon', name: '7+ Gen 3', specs: '4nm · premium mid-range' },
   { brand: 'Snapdragon', name: '7 Gen 3', specs: '4nm · balanced perf/watt' },
+  { brand: 'Snapdragon', name: '7s Gen 2', specs: '4nm · value upper-mid' },
   { brand: 'Snapdragon', name: '6 Gen 1', specs: '4nm · mainstream efficient' },
   { brand: 'MediaTek', name: 'Dimensity 9400', specs: '3nm · all big-core architecture' },
+  { brand: 'MediaTek', name: 'Dimensity 9300+', specs: '4nm · high-end AI NPU' },
   { brand: 'MediaTek', name: 'Dimensity 9300', specs: '4nm · octa-core flagship' },
+  { brand: 'MediaTek', name: 'Dimensity 8400', specs: '4nm · sub-flagship' },
   { brand: 'MediaTek', name: 'Dimensity 8300 Ultra', specs: '4nm · gaming-oriented' },
-  { brand: 'MediaTek', name: 'Dimensity 7200', specs: '4nm · great battery life' },
+  { brand: 'MediaTek', name: 'Dimensity 7300', specs: '4nm · power-saving profile' },
+  { brand: 'MediaTek', name: 'Dimensity 7200', specs: '4nm · battery-focused' },
   { brand: 'MediaTek', name: 'Helio G99 Ultra', specs: '6nm · budget gaming' },
+  { brand: 'Samsung Exynos', name: '2500', specs: '3nm · next-gen Xclipse' },
   { brand: 'Samsung Exynos', name: '2400', specs: '4nm · Xclipse GPU · flagship' },
   { brand: 'Samsung Exynos', name: '1480', specs: '4nm · upper-mid tier' },
+  { brand: 'Samsung Exynos', name: '1380', specs: '5nm · balanced mid-range' },
+  { brand: 'Google Tensor', name: 'G4', specs: '4nm · advanced AI features' },
   { brand: 'Google Tensor', name: 'G3', specs: '4nm · ML-centric pipeline' },
   { brand: 'Unisoc', name: 'T820', specs: '6nm · efficient performance' },
-  { brand: 'Unisoc', name: 'T760', specs: '6nm · 5G entry advanced' }
+  { brand: 'Unisoc', name: 'T760', specs: '6nm · 5G entry advanced' },
+  { brand: 'Unisoc', name: 'T750', specs: '6nm · budget 5G' }
 ];
 
 const gpus = [
+  { brand: 'Adreno', name: '830', specs: 'Ray tracing Gen2 · flagship' },
   { brand: 'Adreno', name: '750', specs: 'Ray tracing · elite tier' },
+  { brand: 'Adreno', name: '740', specs: 'High-end stable FPS' },
   { brand: 'Adreno', name: '735', specs: 'High efficiency flagship-lite' },
   { brand: 'Adreno', name: '720', specs: 'Upper mid-range stable' },
+  { brand: 'Mali', name: 'G925 MC12', specs: 'New-gen flagship graphics' },
   { brand: 'Mali', name: 'G720 MC12', specs: 'Flagship graphics cluster' },
+  { brand: 'Mali', name: 'G715 MC10', specs: 'Solid high tier' },
   { brand: 'Mali', name: 'G615 MC6', specs: 'Balanced premium tier' },
   { brand: 'Mali', name: 'G610 MC4', specs: 'Mid-tier gaming' },
+  { brand: 'Xclipse', name: '950', specs: 'RDNA mobile next-gen' },
   { brand: 'Xclipse', name: '940', specs: 'RDNA-based mobile graphics' },
   { brand: 'Immortalis', name: 'G925', specs: 'HW ray tracing support' },
-  { brand: 'PowerVR', name: 'B-Series', specs: 'Efficiency-focused design' },
-  { brand: 'IMG', name: 'CXT-48', specs: 'Mid-budget optimized' }
+  { brand: 'Immortalis', name: 'G720', specs: 'High-end tracing pipeline' },
+  { brand: 'PowerVR', name: 'B-Series', specs: 'Efficiency-focused design' }
 ];
 
 const ramOptions = ['512 MB', '1 GB', '2 GB', '3 GB', '4 GB', '6 GB', '8 GB', '12 GB', '16 GB', '24 GB'];
@@ -39,11 +54,10 @@ const connectivityOptions = [
   '5G+ · Wi‑Fi 7 · Bluetooth 5.4',
   '5G mmWave · Wi‑Fi 7E · Bluetooth 6.0 ready'
 ];
-
 const sensors = [
-  'Accelerometro', 'Giroscopio', 'Barometro', 'Sensore di prossimità', 'Bussola',
-  'Sensore luce ambientale', 'Impronte ottico', 'Impronte ultrasonico', 'Impronte laterale',
-  'Face Unlock 3D', 'Sensore temperatura', 'NFC', 'UWB', 'Sensore Hall', 'IR Blaster', 'LiDAR-like depth'
+  'Accelerometro', 'Giroscopio', 'Barometro', 'Sensore di prossimità', 'Bussola', 'Sensore luce ambientale',
+  'Impronte ottico', 'Impronte ultrasonico', 'Impronte laterale', 'Face Unlock 3D', 'Sensore temperatura',
+  'NFC', 'UWB', 'Sensore Hall', 'IR Blaster', 'LiDAR-like depth', 'Magnetometro', 'Heart-rate sensor'
 ];
 
 const state = { cameraCount: 4, selectedSensors: new Set(['Accelerometro', 'Giroscopio', 'NFC', 'Face Unlock 3D']) };
@@ -53,6 +67,7 @@ const el = {
   gpuSelect: document.getElementById('gpuSelect'),
   cpuSpecs: document.getElementById('cpuSpecs'),
   gpuSpecs: document.getElementById('gpuSpecs'),
+  brandStrip: document.getElementById('brandStrip'),
   ramSelect: document.getElementById('ramSelect'),
   dynamicRamToggle: document.getElementById('dynamicRamToggle'),
   dynamicRamSelect: document.getElementById('dynamicRamSelect'),
@@ -78,6 +93,7 @@ const el = {
   audioSelect: document.getElementById('audioSelect'),
   protectionSelect: document.getElementById('protectionSelect'),
   priceInput: document.getElementById('priceInput'),
+  autoPrice: document.getElementById('autoPrice'),
   priceError: document.getElementById('priceError'),
   buildBtn: document.getElementById('buildBtn'),
   liveSpecs: document.getElementById('liveSpecs'),
@@ -88,11 +104,19 @@ const el = {
 };
 
 const fillSelect = (select, list, mapper = (v) => v) => {
-  select.innerHTML = list.map((item, index) => `<option value="${index}">${mapper(item)}</option>`).join('');
+  select.innerHTML = list.map((item, i) => `<option value="${i}">${mapper(item)}</option>`).join('');
 };
 
 const getCPU = () => processors[Number(el.cpuSelect.value)];
 const getGPU = () => gpus[Number(el.gpuSelect.value)];
+
+function updateBrandStrip() {
+  const cpu = getCPU();
+  const gpu = getGPU();
+  el.brandStrip.innerHTML = [`CPU: ${cpu.brand}`, `GPU: ${gpu.brand}`, 'Android', '5G Ready']
+    .map((x) => `<span class="logo-pill">${x}</span>`)
+    .join('');
+}
 
 function initSensors() {
   el.sensorList.innerHTML = '';
@@ -112,45 +136,36 @@ function initSensors() {
 }
 
 function applyCameraMode(cameraNode, idx) {
-  const advanced = cameraNode.querySelectorAll('.camera-adv');
-  const title = cameraNode.querySelector('.camera-title');
-  title.textContent = `Fotocamera #${idx + 1}`;
-  if (idx === 0) {
-    advanced.forEach((row) => row.classList.add('hidden'));
-  } else {
-    advanced.forEach((row) => row.classList.remove('hidden'));
-  }
+  cameraNode.querySelector('.camera-title').textContent = `Fotocamera #${idx + 1}`;
+  cameraNode.querySelectorAll('.camera-adv').forEach((row) => row.classList.toggle('hidden', idx === 0));
 }
 
 function renderCameraInputs() {
   el.cameraList.innerHTML = '';
   for (let i = 0; i < state.cameraCount; i += 1) {
     const node = el.cameraTemplate.content.cloneNode(true);
-    const container = node.querySelector('.camera-item');
-    applyCameraMode(container, i);
+    applyCameraMode(node.querySelector('.camera-item'), i);
     el.cameraList.appendChild(node);
   }
 }
 
 function readCamera(item, idx) {
-  const base = {
-    i: idx + 1,
-    type: item.querySelector('.camera-type').value,
-    mp: item.querySelector('.camera-mp').value
-  };
-  if (idx === 0) return `${base.i}) ${base.type} ${base.mp}MP`;
-  const aperture = item.querySelector('.camera-aperture').value;
-  const ois = item.querySelector('.camera-ois').value;
-  const pdaf = item.querySelector('.camera-pdaf').value;
-  const zoom = item.querySelector('.camera-zoom').value;
-  const pixel = item.querySelector('.camera-pixel').value;
-  const video = item.querySelector('.camera-video').value;
-  return `${base.i}) ${base.type} ${base.mp}MP · ${aperture} · OIS:${ois} · PDAF:${pdaf} · Zoom ${zoom}x · ${pixel}μm · ${video}`;
+  const base = `${idx + 1}) ${item.querySelector('.camera-type').value} ${item.querySelector('.camera-mp').value}MP`;
+  if (idx === 0) return base;
+  return `${base} · ${item.querySelector('.camera-aperture').value} · Sensor ${item.querySelector('.camera-sensor-size').value}" · OIS:${item.querySelector('.camera-ois').value} · PDAF:${item.querySelector('.camera-pdaf').value} · Zoom ${item.querySelector('.camera-zoom').value}x · ${item.querySelector('.camera-pixel').value}μm · ${item.querySelector('.camera-video').value}`;
 }
 
-function getCameraSummary() {
-  const cams = [...el.cameraList.querySelectorAll('.camera-item')];
-  return cams.map((cam, idx) => readCamera(cam, idx)).join(' || ');
+const getCameraSummary = () => [...el.cameraList.querySelectorAll('.camera-item')].map(readCamera).join(' || ');
+
+function estimatePrice() {
+  const cpuIdx = Number(el.cpuSelect.value);
+  const gpuIdx = Number(el.gpuSelect.value);
+  const ramWeight = ramOptions.indexOf(el.ramSelect.value) * 40;
+  const storageWeight = storageOptions.indexOf(el.storageSelect.value) * 55;
+  const cameraWeight = state.cameraCount * 45;
+  const sensorWeight = state.selectedSensors.size * 8;
+  const dynamicWeight = el.dynamicRamToggle.checked ? Number(el.dynamicRamSelect.value) * 8 : 0;
+  return Math.min(2999, Math.max(300, 300 + cpuIdx * 36 + gpuIdx * 24 + ramWeight + storageWeight + cameraWeight + sensorWeight + dynamicWeight));
 }
 
 function validatePrice() {
@@ -166,11 +181,11 @@ function validatePrice() {
 function collectData() {
   const cpu = getCPU();
   const gpu = getGPU();
-  const extraRam = el.dynamicRamToggle.checked ? ` + ${el.dynamicRamSelect.value} RAM dinamica` : '';
+  const dyn = el.dynamicRamToggle.checked ? ` + ${el.dynamicRamSelect.value} RAM dinamica` : '';
   return {
     cpu: `${cpu.brand} ${cpu.name}`,
     gpu: `${gpu.brand} ${gpu.name}`,
-    ram: `${el.ramSelect.value}${extraRam}`,
+    ram: `${el.ramSelect.value}${dyn}`,
     storage: `${el.storageSelect.value} · ${el.storageType.value}`,
     cameras: getCameraSummary(),
     sensors: [...state.selectedSensors].join(', ') || 'Nessuno',
@@ -189,16 +204,12 @@ function updateLiveSpecs() {
   const data = collectData();
   el.cpuSpecs.textContent = getCPU().specs;
   el.gpuSpecs.textContent = getGPU().specs;
-  el.liveSpecs.innerHTML = Object.entries(data)
-    .map(([k, v]) => `<div class="spec-item"><span>${k.toUpperCase()}</span><strong>${v}</strong></div>`)
-    .join('');
+  updateBrandStrip();
+  el.autoPrice.value = `${estimatePrice().toLocaleString('it-IT')} €`;
+  el.liveSpecs.innerHTML = Object.entries(data).map(([k, v]) => `<div class="spec-item"><span>${k.toUpperCase()}</span><strong>${v}</strong></div>`).join('');
 }
 
-function deviceName() {
-  const a = ['Nova', 'Pulse', 'Nebula', 'Astra', 'Vortex', 'Vertex', 'Quantum'];
-  const b = ['Ultra', 'Pro', 'Prime', 'Edge', 'Max'];
-  return `${a[Math.floor(Math.random() * a.length)]} ${Math.floor(20 + Math.random() * 80)} ${b[Math.floor(Math.random() * b.length)]}`;
-}
+const deviceName = () => `${['Nova', 'Pulse', 'Nebula', 'Astra', 'Vortex', 'Vertex'][Math.floor(Math.random() * 6)]} ${Math.floor(20 + Math.random() * 80)} ${['Ultra', 'Pro', 'Prime', 'Edge', 'Max'][Math.floor(Math.random() * 5)]}`;
 
 function buildCard() {
   if (!validatePrice()) return;
@@ -210,18 +221,11 @@ function buildCard() {
       <p class="eyebrow">Custom Build Ready</p>
       <h3 class="product-title">${deviceName()}</h3>
       <div>
-        <span class="badge">${getCPU().brand}</span>
-        <span class="badge">${getGPU().brand}</span>
-        <span class="badge">${el.ramSelect.value}</span>
-        <span class="badge">${el.storageSelect.value}</span>
-        <span class="badge">${el.osSelect.value}</span>
+        <span class="badge">${getCPU().brand}</span><span class="badge">${getGPU().brand}</span><span class="badge">${el.ramSelect.value}</span><span class="badge">${el.storageSelect.value}</span><span class="badge">${el.osSelect.value}</span>
       </div>
       <p class="price">${data.price}</p>
-      <div class="spec-list">
-        ${Object.entries(data).filter(([k]) => k !== 'price').map(([k, v]) => `<div class="spec-item"><span>${k.toUpperCase()}</span><strong>${v}</strong></div>`).join('')}
-      </div>
-    </div>
-  `;
+      <div class="spec-list">${Object.entries(data).filter(([k]) => k !== 'price').map(([k, v]) => `<div class="spec-item"><span>${k.toUpperCase()}</span><strong>${v}</strong></div>`).join('')}</div>
+    </div>`;
   el.outputPanel.hidden = false;
   el.outputPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
