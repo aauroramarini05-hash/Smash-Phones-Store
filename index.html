@@ -3,155 +3,282 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smash Phones Store — Custom Builder</title>
+    <title>Smash Phones Store — Elite Builder</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="topbar">
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <header class="topbar glass">
       <div class="brand">
         <div class="brand-icon">⚡</div>
         <div>
           <p class="eyebrow">Smash Phones Store</p>
-          <h1>Smartphone Builder Pro</h1>
+          <h1>Elite Smartphone Forge</h1>
         </div>
       </div>
-      <button id="themeToggle" class="ghost-btn" type="button" aria-label="Cambia tema">🌙 Dark</button>
+      <div class="topbar-actions">
+        <button id="themeToggle" class="ghost-btn" type="button">🌙 Dark</button>
+      </div>
     </header>
 
     <main class="layout">
-      <section class="panel config-panel">
-        <h2>Configura il tuo smartphone</h2>
-        <p class="sub">Dashboard dinamica in tempo reale, stile e-commerce professionale.</p>
+      <section class="panel config-panel glass">
+        <div class="panel-head">
+          <h2>Configura il tuo smartphone premium</h2>
+          <p>Seleziona ogni dettaglio hardware/software con aggiornamento live in stile store professionale.</p>
+        </div>
 
-        <div class="field-grid">
-          <article class="field-card">
-            <label for="cpuSelect">1) Processore</label>
-            <select id="cpuSelect"></select>
-            <small id="cpuSpecs" class="hint"></small>
-          </article>
+        <div class="config-sections">
+          <section class="section-box">
+            <h3>⚙️ Core Hardware</h3>
+            <div class="field-grid two-col">
+              <article class="field-card">
+                <label for="cpuSelect">Processore (CPU)</label>
+                <select id="cpuSelect"></select>
+                <small id="cpuSpecs" class="hint"></small>
+              </article>
 
-          <article class="field-card">
-            <label for="ramSelect">2) RAM</label>
-            <select id="ramSelect"></select>
-            <label class="toggle-row" for="dynamicRam">
-              <span>RAM dinamica</span>
-              <input id="dynamicRam" type="checkbox" />
-            </label>
-          </article>
+              <article class="field-card">
+                <label for="gpuSelect">Scheda grafica (GPU)</label>
+                <select id="gpuSelect"></select>
+                <small id="gpuSpecs" class="hint"></small>
+              </article>
 
-          <article class="field-card">
-            <label for="storageSelect">3) Memoria interna</label>
-            <select id="storageSelect"></select>
-          </article>
+              <article class="field-card">
+                <label for="ramSelect">RAM fisica</label>
+                <select id="ramSelect"></select>
+                <label class="toggle-row" for="dynamicRamToggle">
+                  <span>RAM dinamica</span>
+                  <input id="dynamicRamToggle" type="checkbox" />
+                </label>
+                <label for="dynamicRamSelect">RAM dinamica extra (2–16 GB)</label>
+                <select id="dynamicRamSelect" disabled></select>
+              </article>
 
-          <article class="field-card">
-            <label for="cameraCount">4) Numero fotocamere</label>
-            <input id="cameraCount" type="range" min="1" max="7" value="3" />
-            <strong id="cameraCountLabel">3 fotocamere</strong>
-            <div id="cameraList" class="camera-list"></div>
-          </article>
+              <article class="field-card">
+                <label for="storageSelect">Memoria interna (SSD/UFS)</label>
+                <select id="storageSelect"></select>
+                <label for="storageType">Tipo storage</label>
+                <select id="storageType">
+                  <option>UFS 2.2</option>
+                  <option>UFS 3.1</option>
+                  <option selected>UFS 4.0</option>
+                  <option>NVMe Mobile</option>
+                </select>
+              </article>
+            </div>
+          </section>
 
-          <article class="field-card">
-            <label>5) Sensori</label>
-            <div id="sensorList" class="chip-grid"></div>
-          </article>
+          <section class="section-box">
+            <h3>📸 Fotocamere Professionali</h3>
+            <article class="field-card">
+              <label for="cameraCount">Numero fotocamere (1–7)</label>
+              <input id="cameraCount" type="range" min="1" max="7" value="4" />
+              <strong id="cameraCountLabel">4 fotocamere</strong>
+              <div id="cameraList" class="camera-list"></div>
+            </article>
+          </section>
 
-          <article class="field-card">
-            <label for="batteryInput">6) Batteria (mAh)</label>
-            <input id="batteryInput" type="number" min="1500" max="10000" step="100" value="5000" />
+          <section class="section-box">
+            <h3>🔬 Sensori e Sicurezza</h3>
+            <article class="field-card">
+              <label>Sensori disponibili</label>
+              <div id="sensorList" class="chip-grid"></div>
+            </article>
+          </section>
 
-            <label for="displaySize">Display (pollici)</label>
-            <input id="displaySize" type="number" min="5" max="8" step="0.1" value="6.7" />
+          <section class="section-box">
+            <h3>🔋 Display, Battery & Sistema</h3>
+            <div class="field-grid three-col">
+              <article class="field-card">
+                <label for="batteryInput">Batteria (mAh)</label>
+                <input id="batteryInput" type="number" min="1500" max="12000" step="100" value="5500" />
+                <label for="chargeInput">Ricarica cablata (W)</label>
+                <input id="chargeInput" type="number" min="10" max="240" step="5" value="80" />
+                <label for="wirelessCharge">Ricarica wireless</label>
+                <select id="wirelessCharge">
+                  <option>No</option>
+                  <option>15W</option>
+                  <option selected>30W</option>
+                  <option>50W</option>
+                </select>
+              </article>
 
-            <label for="refreshRate">Refresh rate</label>
-            <select id="refreshRate">
-              <option>60 Hz</option>
-              <option>90 Hz</option>
-              <option selected>120 Hz</option>
-              <option>144 Hz</option>
-            </select>
+              <article class="field-card">
+                <label for="displaySize">Display (pollici)</label>
+                <input id="displaySize" type="number" min="5" max="8" step="0.1" value="6.8" />
+                <label for="refreshRate">Refresh rate</label>
+                <select id="refreshRate">
+                  <option>60 Hz</option>
+                  <option>90 Hz</option>
+                  <option>120 Hz</option>
+                  <option selected>144 Hz</option>
+                  <option>165 Hz</option>
+                </select>
+                <label for="displayType">Tipo display</label>
+                <select id="displayType">
+                  <option>IPS LCD</option>
+                  <option>OLED</option>
+                  <option>AMOLED</option>
+                  <option selected>LTPO AMOLED</option>
+                  <option>MicroLED</option>
+                </select>
+              </article>
 
-            <label for="displayType">Tipo display</label>
-            <select id="displayType">
-              <option>AMOLED</option>
-              <option>OLED</option>
-              <option>LTPO AMOLED</option>
-              <option>IPS LCD</option>
-            </select>
+              <article class="field-card">
+                <label for="osSelect">Sistema operativo</label>
+                <select id="osSelect">
+                  <option>Android 12</option>
+                  <option>Android 13</option>
+                  <option selected>Android 14</option>
+                  <option>Android 15</option>
+                  <option>Android 16 Beta</option>
+                </select>
+                <label for="connectivitySelect">Connettività</label>
+                <select id="connectivitySelect"></select>
+                <label for="coolingSelect">Raffreddamento</label>
+                <select id="coolingSelect">
+                  <option>Standard</option>
+                  <option selected>Vapor Chamber</option>
+                  <option>Doppia VC + Grafene</option>
+                  <option>Liquid Cooling Pro</option>
+                </select>
+              </article>
+            </div>
+          </section>
 
-            <label for="osSelect">Sistema operativo</label>
-            <select id="osSelect">
-              <option>Android 12</option>
-              <option>Android 13</option>
-              <option selected>Android 14</option>
-              <option>Android 15</option>
-            </select>
+          <section class="section-box">
+            <h3>🎨 Materiali, Design e Prezzo</h3>
+            <div class="field-grid three-col">
+              <article class="field-card">
+                <label for="materialSelect">Materiali</label>
+                <select id="materialSelect">
+                  <option>Policarbonato</option>
+                  <option>Vetro + Metallo</option>
+                  <option selected>Alluminio + Vetro Opaco</option>
+                  <option>Titanio + Ceramica</option>
+                </select>
+                <label for="finishSelect">Finitura</label>
+                <select id="finishSelect">
+                  <option>Matte</option>
+                  <option selected>Satin</option>
+                  <option>Glossy</option>
+                  <option>Textured</option>
+                </select>
+                <label for="colorSelect">Colore</label>
+                <select id="colorSelect">
+                  <option>Nero Onice</option>
+                  <option>Argento Nebbia</option>
+                  <option selected>Blu Zaffiro</option>
+                  <option>Verde Titan</option>
+                  <option>Rosso Volcano</option>
+                  <option>Viola Aurora</option>
+                </select>
+              </article>
 
-            <label for="connectivitySelect">Connettività</label>
-            <select id="connectivitySelect">
-              <option>4G · Wi‑Fi 5 · Bluetooth 5.0</option>
-              <option>5G · Wi‑Fi 6 · Bluetooth 5.2</option>
-              <option selected>5G · Wi‑Fi 6E · Bluetooth 5.3</option>
-              <option>5G+ · Wi‑Fi 7 · Bluetooth 5.4</option>
-            </select>
+              <article class="field-card">
+                <label for="simSelect">SIM</label>
+                <select id="simSelect">
+                  <option>Dual Nano SIM</option>
+                  <option selected>Dual SIM + eSIM</option>
+                  <option>Solo eSIM</option>
+                </select>
+                <label for="audioSelect">Audio</label>
+                <select id="audioSelect">
+                  <option>Stereo Base</option>
+                  <option selected>Stereo Dolby Atmos</option>
+                  <option>Hi-Res Quad Speaker</option>
+                </select>
+                <label for="protectionSelect">Protezione</label>
+                <select id="protectionSelect">
+                  <option>IP54</option>
+                  <option>IP67</option>
+                  <option selected>IP68</option>
+                  <option>IP69</option>
+                </select>
+              </article>
 
-            <label for="materialSelect">Materiali</label>
-            <select id="materialSelect">
-              <option>Plastica rinforzata</option>
-              <option selected>Vetro + Metallo</option>
-              <option>Alluminio aerospaziale</option>
-              <option>Ceramica + Titanio</option>
-            </select>
-
-            <label for="colorSelect">Colore</label>
-            <select id="colorSelect">
-              <option>Nero Onice</option>
-              <option selected>Blu Zaffiro</option>
-              <option>Argento Nebbia</option>
-              <option>Verde Titan</option>
-              <option>Rosso Volcano</option>
-            </select>
-          </article>
-
-          <article class="field-card">
-            <label for="priceInput">Prezzo finale (€)</label>
-            <input id="priceInput" type="number" min="1" max="2999" value="999" />
-            <small class="hint">Valore consentito: da 1€ a 2.999€</small>
-            <p id="priceError" class="error"></p>
-          </article>
+              <article class="field-card">
+                <label for="priceInput">Prezzo finale (€)</label>
+                <input id="priceInput" type="number" min="1" max="2999" value="1299" />
+                <small class="hint">Valore consentito: 1€ — 2.999€</small>
+                <p id="priceError" class="error"></p>
+              </article>
+            </div>
+          </section>
         </div>
 
         <button id="buildBtn" class="primary-btn" type="button">Costruisci</button>
       </section>
 
-      <aside class="panel preview-panel">
+      <aside class="panel preview-panel glass">
         <h2>Anteprima specifiche live</h2>
         <div id="liveSpecs" class="spec-list"></div>
       </aside>
     </main>
 
-    <section class="panel output-panel" id="outputPanel" hidden>
+    <section class="panel output-panel glass" id="outputPanel" hidden>
       <h2>Il tuo smartphone è pronto</h2>
       <div class="product-card" id="productCard"></div>
     </section>
 
     <template id="cameraTemplate">
       <div class="camera-item">
-        <span class="camera-icon">📷</span>
-        <input type="number" min="8" max="200" step="1" value="50" class="camera-mp" />
-        <span>MP</span>
-        <select class="camera-type">
-          <option>Grandangolo</option>
-          <option>Ultra-wide</option>
-          <option>Macro</option>
-          <option>Teleobiettivo</option>
-          <option>Periscopio</option>
-          <option>Depth</option>
-          <option>Monocromatica</option>
-        </select>
+        <div class="camera-head">
+          <span class="camera-icon">📷</span>
+          <strong class="camera-title">Fotocamera #1</strong>
+        </div>
+        <div class="camera-grid">
+          <label>Tipo
+            <select class="camera-type">
+              <option>Grandangolo</option>
+              <option>Ultra-wide</option>
+              <option>Macro</option>
+              <option>Teleobiettivo</option>
+              <option>Periscopio</option>
+              <option>Depth</option>
+              <option>Monocromatica</option>
+              <option>TOF 3D</option>
+            </select>
+          </label>
+          <label>Megapixel
+            <input type="number" min="8" max="200" step="1" value="50" class="camera-mp" />
+          </label>
+          <label class="camera-adv">Apertura
+            <input type="text" value="f/1.8" class="camera-aperture" />
+          </label>
+          <label class="camera-adv">OIS
+            <select class="camera-ois">
+              <option>No</option>
+              <option selected>Sì</option>
+            </select>
+          </label>
+          <label class="camera-adv">PDAF
+            <select class="camera-pdaf">
+              <option>No</option>
+              <option selected>Sì</option>
+            </select>
+          </label>
+          <label class="camera-adv">Zoom ottico (x)
+            <input type="number" min="1" max="20" step="0.5" value="3" class="camera-zoom" />
+          </label>
+          <label class="camera-adv">Pixel size (μm)
+            <input type="number" min="0.5" max="2.5" step="0.1" value="1.0" class="camera-pixel" />
+          </label>
+          <label class="camera-adv">Video max
+            <select class="camera-video">
+              <option>1080p60</option>
+              <option>4K30</option>
+              <option selected>4K60</option>
+              <option>8K30</option>
+            </select>
+          </label>
+        </div>
       </div>
     </template>
 
