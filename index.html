@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smash Phones Store — Custom Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        <div>
+          <p class="eyebrow">Smash Phones Store</p>
+          <h1>Smartphone Builder Pro</h1>
+        </div>
+      </div>
+      <button id="themeToggle" class="ghost-btn" type="button" aria-label="Cambia tema">🌙 Dark</button>
+    </header>
+
+    <main class="layout">
+      <section class="panel config-panel">
+        <h2>Configura il tuo smartphone</h2>
+        <p class="sub">Dashboard dinamica in tempo reale, stile e-commerce professionale.</p>
+
+        <div class="field-grid">
+          <article class="field-card">
+            <label for="cpuSelect">1) Processore</label>
+            <select id="cpuSelect"></select>
+            <small id="cpuSpecs" class="hint"></small>
+          </article>
+
+          <article class="field-card">
+            <label for="ramSelect">2) RAM</label>
+            <select id="ramSelect"></select>
+            <label class="toggle-row" for="dynamicRam">
+              <span>RAM dinamica</span>
+              <input id="dynamicRam" type="checkbox" />
+            </label>
+          </article>
+
+          <article class="field-card">
+            <label for="storageSelect">3) Memoria interna</label>
+            <select id="storageSelect"></select>
+          </article>
+
+          <article class="field-card">
+            <label for="cameraCount">4) Numero fotocamere</label>
+            <input id="cameraCount" type="range" min="1" max="7" value="3" />
+            <strong id="cameraCountLabel">3 fotocamere</strong>
+            <div id="cameraList" class="camera-list"></div>
+          </article>
+
+          <article class="field-card">
+            <label>5) Sensori</label>
+            <div id="sensorList" class="chip-grid"></div>
+          </article>
+
+          <article class="field-card">
+            <label for="batteryInput">6) Batteria (mAh)</label>
+            <input id="batteryInput" type="number" min="1500" max="10000" step="100" value="5000" />
+
+            <label for="displaySize">Display (pollici)</label>
+            <input id="displaySize" type="number" min="5" max="8" step="0.1" value="6.7" />
+
+            <label for="refreshRate">Refresh rate</label>
+            <select id="refreshRate">
+              <option>60 Hz</option>
+              <option>90 Hz</option>
+              <option selected>120 Hz</option>
+              <option>144 Hz</option>
+            </select>
+
+            <label for="displayType">Tipo display</label>
+            <select id="displayType">
+              <option>AMOLED</option>
+              <option>OLED</option>
+              <option>LTPO AMOLED</option>
+              <option>IPS LCD</option>
+            </select>
+
+            <label for="osSelect">Sistema operativo</label>
+            <select id="osSelect">
+              <option>Android 12</option>
+              <option>Android 13</option>
+              <option selected>Android 14</option>
+              <option>Android 15</option>
+            </select>
+
+            <label for="connectivitySelect">Connettività</label>
+            <select id="connectivitySelect">
+              <option>4G · Wi‑Fi 5 · Bluetooth 5.0</option>
+              <option>5G · Wi‑Fi 6 · Bluetooth 5.2</option>
+              <option selected>5G · Wi‑Fi 6E · Bluetooth 5.3</option>
+              <option>5G+ · Wi‑Fi 7 · Bluetooth 5.4</option>
+            </select>
+
+            <label for="materialSelect">Materiali</label>
+            <select id="materialSelect">
+              <option>Plastica rinforzata</option>
+              <option selected>Vetro + Metallo</option>
+              <option>Alluminio aerospaziale</option>
+              <option>Ceramica + Titanio</option>
+            </select>
+
+            <label for="colorSelect">Colore</label>
+            <select id="colorSelect">
+              <option>Nero Onice</option>
+              <option selected>Blu Zaffiro</option>
+              <option>Argento Nebbia</option>
+              <option>Verde Titan</option>
+              <option>Rosso Volcano</option>
+            </select>
+          </article>
+
+          <article class="field-card">
+            <label for="priceInput">Prezzo finale (€)</label>
+            <input id="priceInput" type="number" min="1" max="2999" value="999" />
+            <small class="hint">Valore consentito: da 1€ a 2.999€</small>
+            <p id="priceError" class="error"></p>
+          </article>
+        </div>
+
+        <button id="buildBtn" class="primary-btn" type="button">Costruisci</button>
+      </section>
+
+      <aside class="panel preview-panel">
+        <h2>Anteprima specifiche live</h2>
+        <div id="liveSpecs" class="spec-list"></div>
+      </aside>
+    </main>
+
+    <section class="panel output-panel" id="outputPanel" hidden>
+      <h2>Il tuo smartphone è pronto</h2>
+      <div class="product-card" id="productCard"></div>
+    </section>
+
+    <template id="cameraTemplate">
+      <div class="camera-item">
+        <span class="camera-icon">📷</span>
+        <input type="number" min="8" max="200" step="1" value="50" class="camera-mp" />
+        <span>MP</span>
+        <select class="camera-type">
+          <option>Grandangolo</option>
+          <option>Ultra-wide</option>
+          <option>Macro</option>
+          <option>Teleobiettivo</option>
+          <option>Periscopio</option>
+          <option>Depth</option>
+          <option>Monocromatica</option>
+        </select>
+      </div>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
