@@ -1,68 +1,56 @@
+const phoneBrands = ['Samsung', 'Xiaomi', 'Redmi', 'POCO', 'realme', 'OPPO', 'vivo', 'OnePlus', 'Nokia', 'Motorola', 'Nothing', 'Honor', 'Infinix', 'Tecno'];
+
 const processors = [
-  { brand: 'Snapdragon', name: '8 Elite', specs: '3nm · Oryon class · flagship 2026' },
-  { brand: 'Snapdragon', name: '8 Gen 3', specs: '4nm · 1x3.3GHz + 5x3.2GHz + 2x2.3GHz' },
-  { brand: 'Snapdragon', name: '8 Gen 2', specs: '4nm · premium high-end' },
-  { brand: 'Snapdragon', name: '8s Gen 3', specs: '4nm · flagship efficiency' },
-  { brand: 'Snapdragon', name: '7+ Gen 3', specs: '4nm · premium mid-range' },
-  { brand: 'Snapdragon', name: '7 Gen 3', specs: '4nm · balanced perf/watt' },
-  { brand: 'Snapdragon', name: '7s Gen 2', specs: '4nm · value upper-mid' },
-  { brand: 'Snapdragon', name: '6 Gen 1', specs: '4nm · mainstream efficient' },
-  { brand: 'MediaTek', name: 'Dimensity 9400', specs: '3nm · all big-core architecture' },
-  { brand: 'MediaTek', name: 'Dimensity 9300+', specs: '4nm · high-end AI NPU' },
-  { brand: 'MediaTek', name: 'Dimensity 9300', specs: '4nm · octa-core flagship' },
-  { brand: 'MediaTek', name: 'Dimensity 8400', specs: '4nm · sub-flagship' },
-  { brand: 'MediaTek', name: 'Dimensity 8300 Ultra', specs: '4nm · gaming-oriented' },
-  { brand: 'MediaTek', name: 'Dimensity 7300', specs: '4nm · power-saving profile' },
-  { brand: 'MediaTek', name: 'Dimensity 7200', specs: '4nm · battery-focused' },
-  { brand: 'MediaTek', name: 'Helio G99 Ultra', specs: '6nm · budget gaming' },
-  { brand: 'Samsung Exynos', name: '2500', specs: '3nm · next-gen Xclipse' },
-  { brand: 'Samsung Exynos', name: '2400', specs: '4nm · Xclipse GPU · flagship' },
-  { brand: 'Samsung Exynos', name: '1480', specs: '4nm · upper-mid tier' },
-  { brand: 'Samsung Exynos', name: '1380', specs: '5nm · balanced mid-range' },
-  { brand: 'Google Tensor', name: 'G4', specs: '4nm · advanced AI features' },
-  { brand: 'Google Tensor', name: 'G3', specs: '4nm · ML-centric pipeline' },
-  { brand: 'Unisoc', name: 'T820', specs: '6nm · efficient performance' },
-  { brand: 'Unisoc', name: 'T760', specs: '6nm · 5G entry advanced' },
-  { brand: 'Unisoc', name: 'T750', specs: '6nm · budget 5G' }
+  { brand: 'Snapdragon', name: '4 Gen 2', tier: 'entry', specs: '4nm · entry 5G' },
+  { brand: 'Snapdragon', name: '680', tier: 'entry', specs: '6nm · basic daily use' },
+  { brand: 'MediaTek', name: 'Helio G85', tier: 'entry', specs: '12nm · entry gaming' },
+  { brand: 'MediaTek', name: 'Helio G99', tier: 'entry', specs: '6nm · strong budget' },
+  { brand: 'Unisoc', name: 'T606', tier: 'entry', specs: '12nm · budget 4G' },
+  { brand: 'Unisoc', name: 'T616', tier: 'entry', specs: '12nm · entry plus' },
+  { brand: 'Dimensity', name: '6100+', tier: 'mid', specs: '6nm · budget 5G' },
+  { brand: 'Dimensity', name: '7020', tier: 'mid', specs: '6nm · balanced 5G' },
+  { brand: 'Snapdragon', name: '6 Gen 1', tier: 'mid', specs: '4nm · mainstream efficient' },
+  { brand: 'Snapdragon', name: '7s Gen 2', tier: 'mid', specs: '4nm · value upper-mid' },
+  { brand: 'Dimensity', name: '7200', tier: 'high', specs: '4nm · battery-focused' },
+  { brand: 'Dimensity', name: '8300 Ultra', tier: 'high', specs: '4nm · gaming-oriented' },
+  { brand: 'Snapdragon', name: '7+ Gen 3', tier: 'high', specs: '4nm · premium mid-range' },
+  { brand: 'Exynos', name: '1480', tier: 'high', specs: '4nm · upper-mid tier' },
+  { brand: 'Snapdragon', name: '8 Gen 2', tier: 'flagship', specs: '4nm · premium high-end' },
+  { brand: 'Snapdragon', name: '8 Gen 3', tier: 'flagship', specs: '4nm · flagship class' },
+  { brand: 'Snapdragon', name: '8 Elite', tier: 'flagship', specs: '3nm · top-tier 2026' },
+  { brand: 'Dimensity', name: '9300+', tier: 'flagship', specs: '4nm · flagship AI' },
+  { brand: 'Exynos', name: '2500', tier: 'flagship', specs: '3nm · next-gen Xclipse' },
+  { brand: 'Tensor', name: 'G4', tier: 'flagship', specs: '4nm · advanced AI features' }
 ];
 
 const gpus = [
-  { brand: 'Adreno', name: '830', specs: 'Ray tracing Gen2 · flagship' },
-  { brand: 'Adreno', name: '750', specs: 'Ray tracing · elite tier' },
-  { brand: 'Adreno', name: '740', specs: 'High-end stable FPS' },
-  { brand: 'Adreno', name: '735', specs: 'High efficiency flagship-lite' },
-  { brand: 'Adreno', name: '720', specs: 'Upper mid-range stable' },
-  { brand: 'Mali', name: 'G925 MC12', specs: 'New-gen flagship graphics' },
-  { brand: 'Mali', name: 'G720 MC12', specs: 'Flagship graphics cluster' },
-  { brand: 'Mali', name: 'G715 MC10', specs: 'Solid high tier' },
-  { brand: 'Mali', name: 'G615 MC6', specs: 'Balanced premium tier' },
-  { brand: 'Mali', name: 'G610 MC4', specs: 'Mid-tier gaming' },
-  { brand: 'Xclipse', name: '950', specs: 'RDNA mobile next-gen' },
-  { brand: 'Xclipse', name: '940', specs: 'RDNA-based mobile graphics' },
-  { brand: 'Immortalis', name: 'G925', specs: 'HW ray tracing support' },
-  { brand: 'Immortalis', name: 'G720', specs: 'High-end tracing pipeline' },
-  { brand: 'PowerVR', name: 'B-Series', specs: 'Efficiency-focused design' }
+  { brand: 'Mali', name: 'G57', tier: 'entry', specs: 'entry graphics' },
+  { brand: 'Adreno', name: '610', tier: 'entry', specs: 'stable entry 3D' },
+  { brand: 'PowerVR', name: 'GE8320', tier: 'entry', specs: 'low-end efficient' },
+  { brand: 'Mali', name: 'G68', tier: 'mid', specs: 'budget-mid performance' },
+  { brand: 'Adreno', name: '710', tier: 'mid', specs: 'mid-range smooth UI' },
+  { brand: 'Mali', name: 'G610', tier: 'high', specs: 'high mid-tier gaming' },
+  { brand: 'Adreno', name: '720', tier: 'high', specs: 'upper mid-range stable' },
+  { brand: 'Mali', name: 'G720', tier: 'high', specs: 'premium tier graphics' },
+  { brand: 'Adreno', name: '740', tier: 'flagship', specs: 'high-end stable FPS' },
+  { brand: 'Adreno', name: '750', tier: 'flagship', specs: 'ray tracing elite' },
+  { brand: 'Adreno', name: '830', tier: 'flagship', specs: 'next-gen flagship' },
+  { brand: 'Xclipse', name: '950', tier: 'flagship', specs: 'RDNA mobile next-gen' }
 ];
 
 const ramOptions = ['512 MB', '1 GB', '2 GB', '3 GB', '4 GB', '6 GB', '8 GB', '12 GB', '16 GB', '24 GB'];
 const dynamicRamOptions = ['2 GB', '4 GB', '6 GB', '8 GB', '10 GB', '12 GB', '14 GB', '16 GB'];
 const storageOptions = ['16 GB', '32 GB', '64 GB', '128 GB', '256 GB', '512 GB', '1 TB', '2 TB'];
-const connectivityOptions = [
-  '4G · Wi‑Fi 5 · Bluetooth 5.0',
-  '5G · Wi‑Fi 6 · Bluetooth 5.2',
-  '5G · Wi‑Fi 6E · Bluetooth 5.3',
-  '5G+ · Wi‑Fi 7 · Bluetooth 5.4',
-  '5G mmWave · Wi‑Fi 7E · Bluetooth 6.0 ready'
-];
-const sensors = [
-  'Accelerometro', 'Giroscopio', 'Barometro', 'Sensore di prossimità', 'Bussola', 'Sensore luce ambientale',
-  'Impronte ottico', 'Impronte ultrasonico', 'Impronte laterale', 'Face Unlock 3D', 'Sensore temperatura',
-  'NFC', 'UWB', 'Sensore Hall', 'IR Blaster', 'LiDAR-like depth', 'Magnetometro', 'Heart-rate sensor'
-];
+const connectivityOptions = ['4G · Wi‑Fi 5 · Bluetooth 5.0', '5G · Wi‑Fi 6 · Bluetooth 5.2', '5G · Wi‑Fi 6E · Bluetooth 5.3', '5G+ · Wi‑Fi 7 · Bluetooth 5.4'];
+const sensors = ['Accelerometro', 'Giroscopio', 'Barometro', 'Sensore di prossimità', 'Bussola', 'Sensore luce ambientale', 'Impronte ottico', 'Impronte ultrasonico', 'Impronte laterale', 'Face Unlock 3D', 'NFC', 'UWB', 'IR Blaster', 'Magnetometro'];
 
-const state = { cameraCount: 4, selectedSensors: new Set(['Accelerometro', 'Giroscopio', 'NFC', 'Face Unlock 3D']) };
+const STORAGE_KEY = 'smash_phones_builder_config_v1';
+const state = { cameraCount: 4, selectedSensors: new Set(['Accelerometro', 'Giroscopio', 'NFC']) };
 
 const el = {
+  tierSelect: document.getElementById('tierSelect'),
+  phoneBrand: document.getElementById('phoneBrand'),
+  phoneModel: document.getElementById('phoneModel'),
   cpuSelect: document.getElementById('cpuSelect'),
   gpuSelect: document.getElementById('gpuSelect'),
   cpuSpecs: document.getElementById('cpuSpecs'),
@@ -95,6 +83,8 @@ const el = {
   priceInput: document.getElementById('priceInput'),
   autoPrice: document.getElementById('autoPrice'),
   priceError: document.getElementById('priceError'),
+  saveConfigBtn: document.getElementById('saveConfigBtn'),
+  loadConfigBtn: document.getElementById('loadConfigBtn'),
   buildBtn: document.getElementById('buildBtn'),
   liveSpecs: document.getElementById('liveSpecs'),
   outputPanel: document.getElementById('outputPanel'),
@@ -103,19 +93,24 @@ const el = {
   cameraTemplate: document.getElementById('cameraTemplate')
 };
 
-const fillSelect = (select, list, mapper = (v) => v) => {
-  select.innerHTML = list.map((item, i) => `<option value="${i}">${mapper(item)}</option>`).join('');
-};
+const fillSelect = (select, list, mapper = (v) => v) => { select.innerHTML = list.map((item, i) => `<option value="${i}">${mapper(item)}</option>`).join(''); };
+const fillSimpleSelect = (select, list) => { select.innerHTML = list.map((item) => `<option>${item}</option>`).join(''); };
 
-const getCPU = () => processors[Number(el.cpuSelect.value)];
-const getGPU = () => gpus[Number(el.gpuSelect.value)];
+function getTierItems(arr) { return arr.filter((x) => x.tier === el.tierSelect.value); }
+function currentCpu() { return getTierItems(processors)[Number(el.cpuSelect.value)] || getTierItems(processors)[0]; }
+function currentGpu() { return getTierItems(gpus)[Number(el.gpuSelect.value)] || getTierItems(gpus)[0]; }
+
+function refreshTierDependentOptions() {
+  fillSelect(el.cpuSelect, getTierItems(processors), (x) => `${x.brand} ${x.name}`);
+  fillSelect(el.gpuSelect, getTierItems(gpus), (x) => `${x.brand} ${x.name}`);
+  updateLiveSpecs();
+}
 
 function updateBrandStrip() {
-  const cpu = getCPU();
-  const gpu = getGPU();
-  el.brandStrip.innerHTML = [`CPU: ${cpu.brand}`, `GPU: ${gpu.brand}`, 'Android', '5G Ready']
-    .map((x) => `<span class="logo-pill">${x}</span>`)
-    .join('');
+  const cpu = currentCpu();
+  const gpu = currentGpu();
+  el.brandStrip.innerHTML = [`Tier: ${el.tierSelect.options[el.tierSelect.selectedIndex].text}`, `Brand: ${el.phoneBrand.value}`, `CPU: ${cpu.brand}`, `GPU: ${gpu.brand}`]
+    .map((x) => `<span class="logo-pill">${x}</span>`).join('');
 }
 
 function initSensors() {
@@ -126,8 +121,7 @@ function initSensors() {
     chip.className = `chip ${state.selectedSensors.has(sensor) ? 'active' : ''}`;
     chip.textContent = sensor;
     chip.addEventListener('click', () => {
-      if (state.selectedSensors.has(sensor)) state.selectedSensors.delete(sensor);
-      else state.selectedSensors.add(sensor);
+      if (state.selectedSensors.has(sensor)) state.selectedSensors.delete(sensor); else state.selectedSensors.add(sensor);
       chip.classList.toggle('active');
       updateLiveSpecs();
     });
@@ -154,18 +148,16 @@ function readCamera(item, idx) {
   if (idx === 0) return base;
   return `${base} · ${item.querySelector('.camera-aperture').value} · Sensor ${item.querySelector('.camera-sensor-size').value}" · OIS:${item.querySelector('.camera-ois').value} · PDAF:${item.querySelector('.camera-pdaf').value} · Zoom ${item.querySelector('.camera-zoom').value}x · ${item.querySelector('.camera-pixel').value}μm · ${item.querySelector('.camera-video').value}`;
 }
-
 const getCameraSummary = () => [...el.cameraList.querySelectorAll('.camera-item')].map(readCamera).join(' || ');
 
 function estimatePrice() {
-  const cpuIdx = Number(el.cpuSelect.value);
-  const gpuIdx = Number(el.gpuSelect.value);
-  const ramWeight = ramOptions.indexOf(el.ramSelect.value) * 40;
-  const storageWeight = storageOptions.indexOf(el.storageSelect.value) * 55;
-  const cameraWeight = state.cameraCount * 45;
+  const tierWeight = { entry: 120, mid: 300, high: 550, flagship: 850 }[el.tierSelect.value];
+  const cameraWeight = state.cameraCount * 40;
   const sensorWeight = state.selectedSensors.size * 8;
+  const ramWeight = ramOptions.indexOf(el.ramSelect.value) * 35;
+  const storageWeight = storageOptions.indexOf(el.storageSelect.value) * 45;
   const dynamicWeight = el.dynamicRamToggle.checked ? Number(el.dynamicRamSelect.value) * 8 : 0;
-  return Math.min(2999, Math.max(300, 300 + cpuIdx * 36 + gpuIdx * 24 + ramWeight + storageWeight + cameraWeight + sensorWeight + dynamicWeight));
+  return Math.min(2999, Math.max(99, tierWeight + cameraWeight + sensorWeight + ramWeight + storageWeight + dynamicWeight));
 }
 
 function validatePrice() {
@@ -179,10 +171,12 @@ function validatePrice() {
 }
 
 function collectData() {
-  const cpu = getCPU();
-  const gpu = getGPU();
+  const cpu = currentCpu();
+  const gpu = currentGpu();
   const dyn = el.dynamicRamToggle.checked ? ` + ${el.dynamicRamSelect.value} RAM dinamica` : '';
   return {
+    telefono: `${el.phoneBrand.value} ${el.phoneModel.value || 'Custom'}`,
+    fascia: el.tierSelect.options[el.tierSelect.selectedIndex].text,
     cpu: `${cpu.brand} ${cpu.name}`,
     gpu: `${gpu.brand} ${gpu.name}`,
     ram: `${el.ramSelect.value}${dyn}`,
@@ -200,77 +194,102 @@ function collectData() {
   };
 }
 
+function saveConfig() {
+  const payload = {
+    tier: el.tierSelect.value,
+    brand: el.phoneBrand.value,
+    model: el.phoneModel.value,
+    ram: el.ramSelect.value,
+    dynamicToggle: el.dynamicRamToggle.checked,
+    dynamicValue: el.dynamicRamSelect.value,
+    storage: el.storageSelect.value,
+    price: el.priceInput.value,
+    sensors: [...state.selectedSensors],
+    cameraCount: state.cameraCount
+  };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+}
+
+function loadConfig() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const saved = JSON.parse(raw);
+  el.tierSelect.value = saved.tier || 'mid';
+  refreshTierDependentOptions();
+  el.phoneBrand.value = saved.brand || el.phoneBrand.value;
+  el.phoneModel.value = saved.model || el.phoneModel.value;
+  el.ramSelect.value = saved.ram || el.ramSelect.value;
+  el.dynamicRamToggle.checked = !!saved.dynamicToggle;
+  el.dynamicRamSelect.disabled = !saved.dynamicToggle;
+  el.dynamicRamSelect.value = saved.dynamicValue || el.dynamicRamSelect.value;
+  el.storageSelect.value = saved.storage || el.storageSelect.value;
+  el.priceInput.value = saved.price || el.priceInput.value;
+  state.cameraCount = Number(saved.cameraCount || state.cameraCount);
+  el.cameraCount.value = state.cameraCount;
+  el.cameraCountLabel.textContent = `${state.cameraCount} fotocamere`;
+  state.selectedSensors = new Set(saved.sensors || [...state.selectedSensors]);
+  initSensors();
+  renderCameraInputs();
+  updateLiveSpecs();
+}
+
 function updateLiveSpecs() {
   const data = collectData();
-  el.cpuSpecs.textContent = getCPU().specs;
-  el.gpuSpecs.textContent = getGPU().specs;
-  updateBrandStrip();
+  el.cpuSpecs.textContent = currentCpu().specs;
+  el.gpuSpecs.textContent = currentGpu().specs;
   el.autoPrice.value = `${estimatePrice().toLocaleString('it-IT')} €`;
+  updateBrandStrip();
   el.liveSpecs.innerHTML = Object.entries(data).map(([k, v]) => `<div class="spec-item"><span>${k.toUpperCase()}</span><strong>${v}</strong></div>`).join('');
 }
 
-const deviceName = () => `${['Nova', 'Pulse', 'Nebula', 'Astra', 'Vortex', 'Vertex'][Math.floor(Math.random() * 6)]} ${Math.floor(20 + Math.random() * 80)} ${['Ultra', 'Pro', 'Prime', 'Edge', 'Max'][Math.floor(Math.random() * 5)]}`;
+const deviceName = () => `${el.phoneBrand.value} ${el.phoneModel.value || 'Custom'} ${['Lite', 'Plus', 'Pro', 'Ultra'][Math.floor(Math.random() * 4)]}`;
 
 function buildCard() {
   if (!validatePrice()) return;
   const data = collectData();
   const lenses = new Array(state.cameraCount).fill('<div class="lens"></div>').join('');
-  el.productCard.innerHTML = `
-    <div class="phone-render"><div class="lens-grid">${lenses}</div></div>
-    <div>
-      <p class="eyebrow">Custom Build Ready</p>
-      <h3 class="product-title">${deviceName()}</h3>
-      <div>
-        <span class="badge">${getCPU().brand}</span><span class="badge">${getGPU().brand}</span><span class="badge">${el.ramSelect.value}</span><span class="badge">${el.storageSelect.value}</span><span class="badge">${el.osSelect.value}</span>
-      </div>
-      <p class="price">${data.price}</p>
-      <div class="spec-list">${Object.entries(data).filter(([k]) => k !== 'price').map(([k, v]) => `<div class="spec-item"><span>${k.toUpperCase()}</span><strong>${v}</strong></div>`).join('')}</div>
-    </div>`;
+  el.productCard.innerHTML = `<div class="phone-render"><div class="lens-grid">${lenses}</div></div><div><p class="eyebrow">Custom Build Ready</p><h3 class="product-title">${deviceName()}</h3><div><span class="badge">${currentCpu().brand}</span><span class="badge">${currentGpu().brand}</span><span class="badge">${el.tierSelect.value}</span><span class="badge">${el.ramSelect.value}</span></div><p class="price">${data.price}</p><div class="spec-list">${Object.entries(data).filter(([k]) => k !== 'price').map(([k, v]) => `<div class="spec-item"><span>${k.toUpperCase()}</span><strong>${v}</strong></div>`).join('')}</div></div>`;
   el.outputPanel.hidden = false;
   el.outputPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function init() {
-  fillSelect(el.cpuSelect, processors, (cpu) => `${cpu.brand} ${cpu.name}`);
-  fillSelect(el.gpuSelect, gpus, (gpu) => `${gpu.brand} ${gpu.name}`);
-  fillSelect(el.ramSelect, ramOptions);
-  fillSelect(el.dynamicRamSelect, dynamicRamOptions);
-  fillSelect(el.storageSelect, storageOptions);
-  fillSelect(el.connectivitySelect, connectivityOptions);
-
+  fillSimpleSelect(el.phoneBrand, phoneBrands);
+  fillSimpleSelect(el.ramSelect, ramOptions);
+  fillSimpleSelect(el.dynamicRamSelect, dynamicRamOptions);
+  fillSimpleSelect(el.storageSelect, storageOptions);
+  fillSimpleSelect(el.connectivitySelect, connectivityOptions);
+  el.phoneBrand.value = 'Samsung';
   el.ramSelect.value = '8 GB';
   el.dynamicRamSelect.value = '8 GB';
   el.storageSelect.value = '256 GB';
-  el.connectivitySelect.selectedIndex = 2;
 
   initSensors();
   renderCameraInputs();
-  updateLiveSpecs();
+  refreshTierDependentOptions();
+  loadConfig();
 
+  el.tierSelect.addEventListener('change', refreshTierDependentOptions);
   el.cameraCount.addEventListener('input', () => {
     state.cameraCount = Number(el.cameraCount.value);
     el.cameraCountLabel.textContent = `${state.cameraCount} fotocamere`;
     renderCameraInputs();
     updateLiveSpecs();
   });
-
   el.dynamicRamToggle.addEventListener('change', () => {
     el.dynamicRamSelect.disabled = !el.dynamicRamToggle.checked;
     updateLiveSpecs();
   });
-
-  document.body.addEventListener('input', (event) => {
-    if (event.target.matches('input, select')) {
-      validatePrice();
-      updateLiveSpecs();
-    }
+  document.body.addEventListener('input', (e) => {
+    if (e.target.matches('input, select')) { validatePrice(); updateLiveSpecs(); }
   });
 
+  el.saveConfigBtn.addEventListener('click', saveConfig);
+  el.loadConfigBtn.addEventListener('click', loadConfig);
   el.themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark');
     el.themeToggle.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark';
   });
-
   el.buildBtn.addEventListener('click', buildCard);
 }
 

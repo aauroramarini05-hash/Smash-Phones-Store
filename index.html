@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smash Phones Store — Elite Builder v2</title>
+    <title>Smash Phones Store — Elite Builder v3</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -30,10 +30,11 @@
       <section class="panel config-panel glass">
         <div class="panel-head">
           <h2>Configura il tuo smartphone premium</h2>
-          <p>Interfaccia avanzata con blocchi professionali, loghi brand, componenti reali e output e-commerce finale.</p>
+          <p>Fascia bassa, media, alta e flagship + scelta marca/modello telefono + salvataggio locale.</p>
         </div>
 
         <nav class="step-nav" aria-label="Passi configurazione">
+          <a href="#identitySec">Marca/Modello</a>
           <a href="#coreSec">Core</a>
           <a href="#cameraSec">Fotocamere</a>
           <a href="#sensorSec">Sensori</a>
@@ -42,6 +43,29 @@
         </nav>
 
         <div class="config-sections">
+          <section id="identitySec" class="section-box">
+            <h3>🏷️ Identità Telefono</h3>
+            <div class="field-grid three-col">
+              <article class="field-card">
+                <label for="tierSelect">Fascia dispositivo</label>
+                <select id="tierSelect">
+                  <option value="entry">Fascia bassa (entry-level)</option>
+                  <option value="mid" selected>Fascia media</option>
+                  <option value="high">Fascia alta</option>
+                  <option value="flagship">Flagship</option>
+                </select>
+              </article>
+              <article class="field-card">
+                <label for="phoneBrand">Marca telefono</label>
+                <select id="phoneBrand"></select>
+              </article>
+              <article class="field-card">
+                <label for="phoneModel">Modello telefono</label>
+                <input id="phoneModel" type="text" value="Neo X" placeholder="Es. Turbo Lite 5G" />
+              </article>
+            </div>
+          </section>
+
           <section id="coreSec" class="section-box">
             <h3>⚙️ Core Hardware</h3>
             <div class="logo-strip" id="brandStrip"></div>
@@ -74,10 +98,10 @@
                 <select id="storageSelect"></select>
                 <label for="storageType">Tipo storage</label>
                 <select id="storageType">
+                  <option>eMMC 5.1</option>
                   <option>UFS 2.2</option>
                   <option>UFS 3.1</option>
                   <option selected>UFS 4.0</option>
-                  <option>NVMe Mobile</option>
                 </select>
               </article>
             </div>
@@ -224,7 +248,11 @@
           </section>
         </div>
 
-        <button id="buildBtn" class="primary-btn" type="button">Costruisci</button>
+        <div class="action-row">
+          <button id="saveConfigBtn" class="ghost-btn" type="button">💾 Salva configurazione</button>
+          <button id="loadConfigBtn" class="ghost-btn" type="button">📂 Carica configurazione</button>
+          <button id="buildBtn" class="primary-btn" type="button">Costruisci</button>
+        </div>
       </section>
 
       <aside class="panel preview-panel glass">
@@ -245,42 +273,15 @@
           <strong class="camera-title">Fotocamera #1</strong>
         </div>
         <div class="camera-grid">
-          <label>Tipo
-            <select class="camera-type">
-              <option>Grandangolo</option>
-              <option>Ultra-wide</option>
-              <option>Macro</option>
-              <option>Teleobiettivo</option>
-              <option>Periscopio</option>
-              <option>Depth</option>
-              <option>Monocromatica</option>
-              <option>TOF 3D</option>
-            </select>
-          </label>
-          <label>Megapixel
-            <input type="number" min="8" max="200" step="1" value="50" class="camera-mp" />
-          </label>
-          <label class="camera-adv">Apertura
-            <input type="text" value="f/1.8" class="camera-aperture" />
-          </label>
-          <label class="camera-adv">Dimensione sensore
-            <input type="text" value="1/1.56" class="camera-sensor-size" />
-          </label>
-          <label class="camera-adv">OIS
-            <select class="camera-ois"><option>No</option><option selected>Sì</option></select>
-          </label>
-          <label class="camera-adv">PDAF
-            <select class="camera-pdaf"><option>No</option><option selected>Sì</option></select>
-          </label>
-          <label class="camera-adv">Zoom ottico (x)
-            <input type="number" min="1" max="20" step="0.5" value="3" class="camera-zoom" />
-          </label>
-          <label class="camera-adv">Pixel size (μm)
-            <input type="number" min="0.5" max="2.5" step="0.1" value="1.0" class="camera-pixel" />
-          </label>
-          <label class="camera-adv">Video max
-            <select class="camera-video"><option>1080p60</option><option>4K30</option><option selected>4K60</option><option>8K30</option></select>
-          </label>
+          <label>Tipo<select class="camera-type"><option>Grandangolo</option><option>Ultra-wide</option><option>Macro</option><option>Teleobiettivo</option><option>Periscopio</option><option>Depth</option><option>Monocromatica</option><option>TOF 3D</option></select></label>
+          <label>Megapixel<input type="number" min="8" max="200" step="1" value="50" class="camera-mp" /></label>
+          <label class="camera-adv">Apertura<input type="text" value="f/1.8" class="camera-aperture" /></label>
+          <label class="camera-adv">Dimensione sensore<input type="text" value="1/1.56" class="camera-sensor-size" /></label>
+          <label class="camera-adv">OIS<select class="camera-ois"><option>No</option><option selected>Sì</option></select></label>
+          <label class="camera-adv">PDAF<select class="camera-pdaf"><option>No</option><option selected>Sì</option></select></label>
+          <label class="camera-adv">Zoom ottico (x)<input type="number" min="1" max="20" step="0.5" value="3" class="camera-zoom" /></label>
+          <label class="camera-adv">Pixel size (μm)<input type="number" min="0.5" max="2.5" step="0.1" value="1.0" class="camera-pixel" /></label>
+          <label class="camera-adv">Video max<select class="camera-video"><option>1080p60</option><option>4K30</option><option selected>4K60</option><option>8K30</option></select></label>
         </div>
       </div>
     </template>
